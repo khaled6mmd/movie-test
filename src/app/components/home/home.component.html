@@ -1,55 +1,49 @@
-<!-- <ng-container>
-    <app-slider></app-slider>
-</ng-container> -->
+<header>
+    <nav>
+        <a href="#" class="logo">MOVIES.</a>
+        <ul class="desktop">
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Sign Up / Log In</a></li>
+        </ul>
+        <div class="mobile">
+            <label for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle">
+            <ul>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Sign Up / Log In</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<div class="listing">
-    <div class="listing__head">
-        <h3 class="listing__title">Trending Movies</h3>
-        <a [routerLink]="['/movies']" routerLinkActive="router-link-active" class="listing__explore">
-            <strong>Explore All</strong>
-        </a>
+    <h1>Stream Any Movie at Anytime with No Individual Movie Costs or Rental Fees.</h1>
+    <div class="btnGroup">
+        <a href="#" class="btnWhite">TRY IT FREE</a>
+        <div class="whiteBG"></div>
     </div>
-    
-    <!-- <app-skeleton *ngIf="loader" ></app-skeleton> -->
-    <!-- <p-carousel [value]="nowPlaying" [numVisible]="6" [numScroll]="4" [circular]="false" *ngIf="!loader"
-        [responsiveOptions]="responsiveOptions">
-        <ng-template let-movie pTemplate="item">
-            <div class="listing-item-style" [routerLink]="['/movies/', movie.id]">
-                <div class="overlay">
-                    <div class="hover"><i class="material-icons">play_arrow</i> PLAY NOW</div>
-                </div>
-                <img *ngIf="movie?.poster_path"
-                    src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{movie?.poster_path}}">
-                <img *ngIf="!movie?.poster_path" src="assets/images/default-movie.png">
-                <h6>{{ movie?.title }}</h6>
-                <p class="rate"><i class="material-icons">star</i><span>{{movie?.vote_average}}</span> /10</p>
-                <p class="year"><span>{{movie?.release_date | date: 'yyyy'}}</span>
-                </p>
-            </div>
-        </ng-template>
-    </p-carousel> -->
-</div>
 
-<div class="listing">
-    <div class="listing__head">
-        <h3 class="listing__title">Trending TV Shows</h3>
-        <a [routerLink]="['/tv']" routerLinkActive="router-link-active" class="listing__explore">
-            <strong>Explore All</strong>
-        </a>
+    <p>Thousands of movies with <b>no rental fees</b>. Our <br />monthly plan gives you unlimited access to our <br/>movie library.</p>
+    <p><b>Forget the theaters!</b> Exclusive access to <br />movies in theaters on release date.</p>
+    <img src="http://swingsetimagination.com/practice_web_moviesite/img/ipad-pro.png" alt="ipad" class="ipad">
+    <img src="http://swingsetimagination.com/practice_web_moviesite/img/iphone.png" alt="iphone" class="iphone">
+</header>
+
+<app-movies-section [movies]='movies.message'></app-movies-section>
+
+<section class="callToAction">
+    <h1>Watch your favorite movies and explore similar titles. Get Started today for <span>$5.99</span>/month.</h1>
+    <a href="#" class="btnColor">GET STARTED</a>
+</section>
+<footer>
+    <div class="copy">
+        <a href="#" class="logo">MOVIES.</a>
+        <p>©2018 Movie Website, LLC.</p>
     </div>
-    <!-- <app-skeleton *ngIf="loader"></app-skeleton> -->
-    <p-carousel [value]="tvShows" [numVisible]="6" [numScroll]="4" [circular]="false" *ngIf="!loader"
-        [responsiveOptions]="responsiveOptions">
-        <ng-template let-tv pTemplate="item">
-            <div class="listing-item-style" [routerLink]="['/tv/', tv.id]">
-                <div class="overlay">
-                    <div class="hover"><i class="material-icons">play_arrow</i> PLAY NOW</div>
-                </div>
-                <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{tv?.poster_path}}">
-                <h6>{{ tv?.original_name }}</h6>
-                <p class="rate"><i class="material-icons">star</i><span>{{tv?.vote_average}}</span>/10</p>
-                <p class="year"><span>{{tv?.first_air_date | date: 'yyyy'}}</span>
-            </div>
-        </ng-template>
-    </p-carousel>
-</div>
+    <ul>
+        <li><a href="#"></a>Account</li>
+        <li><a href="#"></a>Help Center</li>
+        <li><a href="#"></a>Terms</li>
+        <li><a href="#"></a>Privacy</li>
+    </ul>
+</footer>

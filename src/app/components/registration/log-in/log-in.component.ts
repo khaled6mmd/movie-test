@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,18 +9,21 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-
-  constructor(private authService : AuthService) {}
+  errorMessage = false
+  constructor(private authService : AuthService, private router: Router) {}
 
   ngOnInit() {
   }
 
   onSubmit(value: any) {
-     this.authService.logIn(value).subscribe(
-       res => {
-        console.log(res);
-        
-         this.authService.storeToken(res.token)
-       })
+    this.errorMessage = false
+     this.authService.logIn(value).subscribe({
+      next: res => {    
+         this.authService.storeToken(res.authorisation.token)
+         this.router.navigate(['/home']);
+       },
+       error: err => {
+        this.errorMessage = true;
+       }})
   }
-}
+} 

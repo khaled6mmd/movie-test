@@ -1,0 +1,8 @@
+<section class="movies-section">
+    <div class="sectionTitle">
+        <h2>MOVIES</h2> <h5 class="add-btn">+Add Movie</h5>
+    </div>
+    <ul>
+        <li *ngFor="let movie of movies"><a href="#"><img class="movie-thumb" [src]="'https://test-api.storexweb.com/' + movie.image" alt="movie poster"></a></li>
+    </ul>
+</section>

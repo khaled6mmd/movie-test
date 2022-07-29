@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs';
+import { ContentService } from 'src/app/services/content.service';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +9,14 @@ import { delay } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  nowPlaying: any;
-  tvShows: any;
+  movies: any;
   responsiveOptions;
   loader = true;
 
   constructor(
     // private movies: MoviesService,
     // private tv: TvService
+    private contentService: ContentService
   ) {
     this.responsiveOptions = [
       {
@@ -36,8 +37,16 @@ export class HomeComponent implements OnInit {
     ];
   }
   ngOnInit() {
-    this.trendingMovies(1);
-    this.tvShow(1);
+    // this.trendingMovies(1);
+    // this.tvShow(1);
+    this.getAllMovies()
+  }
+
+  getAllMovies() {
+    this.contentService.getAllMovies().subscribe(res => {
+      this.movies = res;
+    }
+    )
   }
 
   trendingMovies(page: number) {

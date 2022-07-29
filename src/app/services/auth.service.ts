@@ -19,4 +19,8 @@ export class AuthService {
   storeToken(token: string) {
     localStorage.setItem('moviesToken', token)
   }
+
+  isloggedIn() {
+    return !!localStorage.getItem('moviesToken')
+  }
 }
