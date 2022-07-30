@@ -23,7 +23,7 @@ import { AddEditMovieComponent } from './components/add-edit-movie/add-edit-movi
     SignUpComponent,
     HomeComponent,
     MoviesSectionComponent,
-    AddEditMovieComponent
+    AddEditMovieComponent,
   ],
   imports: [
     BrowserModule,

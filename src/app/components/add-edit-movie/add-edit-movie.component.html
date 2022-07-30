@@ -24,8 +24,8 @@
                             <div class="form-group mt-3">
                                 <label class="mb-2">Genre</label>
                                 <select class="form-control" name="category_id" [(ngModel)]="movie['category_id']" #category_id="ngModel">
-                                    <option value="default" >Select Genre</option>
-                                    <option *ngFor="let genre of categorys" [value]="isEdit? movie['category_id'] : ''">{{genre.name}}</option>
+                                    <option value="">Select Genre</option>
+                                    <option *ngFor="let genre of categories" [value]="movie['category_id'] ? movie['category_id'] : genre.id">{{genre.name}}</option>
                                 </select>
                             </div>
                             <button class="btn btn-primary mt-3" type="submit">

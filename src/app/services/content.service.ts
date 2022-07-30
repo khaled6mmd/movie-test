@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Movie } from '../models/content.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +15,17 @@ export class ContentService {
     return this.http.get<any>(this.apiBase + action)
   }    
 
-  getMoviesByCategory(category_id: any) {
+  getMoviesByCategory(category_id: number) {
     const action = 'moviesByCategory/'
     return this.http.get<any>(this.apiBase + action + category_id)
   } 
 
-  addMovie(newMovie: any) {
+  addMovie(newMovie: FormData) {
     const action = 'movies';
     return this.http.post<any>(this.apiBase + action, newMovie)
   }
 
-  updateMovie(movieId:number, newMovie: any) {
+  updateMovie(movieId:number, newMovie: FormData) {
     const action = 'movies/';
     return this.http.put<any>(this.apiBase + action + movieId, newMovie)
   }

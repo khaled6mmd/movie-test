@@ -3,6 +3,13 @@ export class Movie {
     name!: string;
     description!: string;
     id!: number;
-    image!: any
+    image!: File
+}
+
+export class Category {
+    created_at!: string;
+    id!: string;
+    name!: string;
+    updated_at!: string;
 }
 

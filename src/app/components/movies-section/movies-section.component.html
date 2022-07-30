@@ -1,14 +1,8 @@
 <section class="movies-section">
     <div class="sectionTitle">
-        <h2>MOVIES</h2> <h5 class="add-btn" (click)="openAddEditModal(false)">+Add Movie</h5>
+        <h3>{{category}}</h3>
     </div>
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    <ul>
+    <ul class="movies-list">
         <li *ngFor="let movie of movies"><a href="#">
             <img class="movie-thumb" [src]="'https://test-api.storexweb.com/' + movie.image" alt="movie poster"></a>
             <div class="movie-options">

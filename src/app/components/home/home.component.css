@@ -5,6 +5,9 @@ nav {
     display: inline-block;
     width: 100%;
 }
+.nav-item {
+    cursor: pointer;
+}
 nav a {
     color: white;
     text-decoration: none;
@@ -114,6 +117,10 @@ label {
     margin-bottom: 40px;
 }
 
+.add-btn {
+    cursor: pointer;  
+    white-space: nowrap;; 
+}
 /* ----Footer-----*/
 
 footer a {

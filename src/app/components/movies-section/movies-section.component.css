@@ -2,7 +2,7 @@
 .movies-section {
     width: 90%;
     padding: 0 5%;
-    margin-bottom: 160px;
+    margin-bottom: 80px;
 }
 
 .sectionTitle h2, .sectionTitle a  {
@@ -13,12 +13,9 @@
 .sectionTitle a {
     margin-left: 20px;
 }
-.add-btn {
-    cursor: pointer;
-}
 
 .sectionTitle {
-    margin: 50px 0 20px 0;
+    margin: 25px 0 20px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -60,4 +57,12 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 20px;
+}
+
+.movies-list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
 }

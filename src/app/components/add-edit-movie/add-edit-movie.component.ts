@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Movie } from 'src/app/models/content.model';
+import { Category, Movie } from 'src/app/models/content.model';
 import { ContentService } from 'src/app/services/content.service';
 
 @Component({
@@ -9,28 +9,28 @@ import { ContentService } from 'src/app/services/content.service';
   styleUrls: ['./add-edit-movie.component.css']
 })
 export class AddEditMovieComponent implements OnInit {
-  categorys: any;
-  image: any;
+  categories: Category[] = [];
+  image!: File;
   @Input() isEdit!: boolean;
   @Input() movie: Movie = new Movie;
 
   constructor(private activeModal: NgbModal, private contentService: ContentService) { }
 
   ngOnInit(): void {
-    this.getAllCategorys()
+    this.getAllCategories()
   }
 
   closeModal() {
     this.activeModal.dismissAll();
   }
 
-  onFileChanged(event: any) {
+  onFileChanged(event : any) {
     this.image = event.target.files[0];
   }
 
-  getAllCategorys() {
+  getAllCategories() {
     this.contentService.getCategories().subscribe(res => {
-      this.categorys = res.message;
+      this.categories = res.message;
     })
   }
 
