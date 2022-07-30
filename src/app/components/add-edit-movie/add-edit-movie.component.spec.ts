@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SliderComponent } from './slider.component';
+import { AddEditMovieComponent } from './add-edit-movie.component';
 
-describe('SliderComponent', () => {
-  let component: SliderComponent;
-  let fixture: ComponentFixture<SliderComponent>;
+describe('AddEditMovieComponent', () => {
+  let component: AddEditMovieComponent;
+  let fixture: ComponentFixture<AddEditMovieComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SliderComponent ]
+      declarations: [ AddEditMovieComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SliderComponent);
+    fixture = TestBed.createComponent(AddEditMovieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

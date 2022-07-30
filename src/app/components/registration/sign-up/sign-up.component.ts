@@ -12,7 +12,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSubmit(value: any) {
+  onSubmit(value: {name: string, email: string, password: string}) {
     this.authService.signUp(value).subscribe(
       res => {
         this.responseMsg = res.message

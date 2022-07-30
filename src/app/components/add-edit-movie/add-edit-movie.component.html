@@ -1,0 +1,40 @@
+<div class="AddEditWraper">
+    <div class="closeBtn" (click)="closeModal()">X</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-md-offset-3">
+                <div>
+                    <div>
+                        <h3 class="panel-title">Add Movie</h3>
+                    </div>
+                    <div>
+                        <form name="form" #f="ngForm" (ngSubmit)="saveMovie(f.value)">
+                            <div class="form-group mt-3">
+                                <label class="mb-2">Name</label>
+                                <input type="text" class="form-control" name="name" [(ngModel)]="movie.name"  #name="ngModel" />
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="mb-2">Description</label>
+                                <input type="text" class="form-control" name="description" [(ngModel)]="movie.description" #description="ngModel" />
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="mb-2">Image</label>
+                                <input (change)="onFileChanged($event)" type="file" accept=".jpg, .jpeg, .png" class="form-control" name="image" ngModel #image="ngModel" />
+                            </div>
+                            <div class="form-group mt-3">
+                                <label class="mb-2">Genre</label>
+                                <select class="form-control" name="category_id" [(ngModel)]="movie['category_id']" #category_id="ngModel">
+                                    <option value="default" >Select Genre</option>
+                                    <option *ngFor="let genre of categorys" [value]="isEdit? movie['category_id'] : ''">{{genre.name}}</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary mt-3" type="submit">
+                                Add Movie
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+

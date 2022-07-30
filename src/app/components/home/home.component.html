@@ -23,13 +23,14 @@
         <div class="whiteBG"></div>
     </div>
 
-    <p>Thousands of movies with <b>no rental fees</b>. Our <br />monthly plan gives you unlimited access to our <br/>movie library.</p>
+    <p>Thousands of movies with <b>no rental fees</b>. Our <br />monthly plan gives you unlimited access to our
+        <br />movie library.</p>
     <p><b>Forget the theaters!</b> Exclusive access to <br />movies in theaters on release date.</p>
     <img src="http://swingsetimagination.com/practice_web_moviesite/img/ipad-pro.png" alt="ipad" class="ipad">
     <img src="http://swingsetimagination.com/practice_web_moviesite/img/iphone.png" alt="iphone" class="iphone">
 </header>
 
-<app-movies-section [movies]='movies.message'></app-movies-section>
+<app-movies-section [movies]='movies' (onMovieSaved)="getAllMovies()"></app-movies-section>
 
 <section class="callToAction">
     <h1>Watch your favorite movies and explore similar titles. Get Started today for <span>$5.99</span>/month.</h1>

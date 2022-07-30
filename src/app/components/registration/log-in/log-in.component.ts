@@ -9,13 +9,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-  errorMessage = false
+  errorMessage: boolean = false
+
   constructor(private authService : AuthService, private router: Router) {}
 
   ngOnInit() {
   }
 
-  onSubmit(value: any) {
+  onSubmit(value: {email: string, password: string}) {
     this.errorMessage = false
      this.authService.logIn(value).subscribe({
       next: res => {    

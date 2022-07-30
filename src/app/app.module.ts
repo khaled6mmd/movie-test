@@ -12,18 +12,18 @@ import { HomeComponent } from './components/home/home.component';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import { CarouselModule } from 'primeng/carousel';
 import { SidebarModule } from 'primeng/sidebar';
-import { SliderComponent } from './components/slider/slider.component';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MoviesSectionComponent } from './components/movies-section/movies-section.component';
+import { AddEditMovieComponent } from './components/add-edit-movie/add-edit-movie.component';
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     SignUpComponent,
     HomeComponent,
-    SliderComponent,
-    MoviesSectionComponent
+    MoviesSectionComponent,
+    AddEditMovieComponent
   ],
   imports: [
     BrowserModule,

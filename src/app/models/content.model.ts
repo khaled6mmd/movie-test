@@ -1,7 +1,8 @@
 export class Movie {
-    category_id!: number;
+    category_id!: string;
     name!: string;
     description!: string;
     id!: number;
-    image!: string
+    image!: any
 }
+

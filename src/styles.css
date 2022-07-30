@@ -1,1 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
+/* ----GLOBAL-----*/
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+:root {
+    --main-black: #1E202B;
+    --main-blue: #08AEEA;
+    --main-green: #2AF598;
+    --main-gradient: linear-gradient(to right, var(--main-blue), var(--main-green));
+}
+
+html {
+    font-family: Source Sans Pro, sans-serif;
+}
+body{
+    width: 100%;
+    background-color: white;
+}
+
+h1{
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--main-black);
+}
+
+h2{
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--main-black);
+}
+
+p, li{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--main-black);
+}
+
+.btnWhite{
+    display: inline-block;
+    text-decoration: none;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 75px;
+    background: #2AF598;
+    background: -webkit-linear-gradient(top left, #2AF598, #08AFEA);
+    background: -moz-linear-gradient(top left, #2AF598, #08AFEA);
+    background: linear-gradient(top left, #2AF598, #08AFEA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btnGroup {
+    position: relative;
+    z-index: 1;
+}
+.whiteBG{
+    background-color: white;
+    display: block;
+    height: 60px;
+    width: 200px;
+    position: absolute;
+    z-index: -1;
+    top:0;
+    border-radius: 3px;
+}
+
+.btnColor{
+    display: inline-block;
+    text-decoration: none;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background-image: var(--main-gradient);
+    color: white;
+    font-size: 20px;
+    font-weight: 700px;
+    border-radius: 3px;
+}
+
+
+span {
+    color: var(--main-green);
+}
