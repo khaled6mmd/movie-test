@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
 import { Category, Movie } from 'src/app/models/content.model';
 import { ContentService } from 'src/app/services/content.service';
 import { AddEditMovieComponent } from '../add-edit-movie/add-edit-movie.component';
@@ -9,18 +10,19 @@ import { AddEditMovieComponent } from '../add-edit-movie/add-edit-movie.componen
   templateUrl: './movies-section.component.html',
   styleUrls: ['./movies-section.component.css']
 })
-export class MoviesSectionComponent implements OnInit {
+export class MoviesSectionComponent implements OnInit, OnDestroy {
 
   @Input() movies: Movie[] = [];
   @Input()category!: Category;
   @Output() onMovieSaved: EventEmitter<any> = new EventEmitter();
+  private subscriptions: Subscription[] = [];
 
   constructor(private modalService: NgbModal, private contentService: ContentService) { }
 
   ngOnInit(): void {
   }
 
-  openAddEditModal(isEdit: boolean, movie: Movie) {
+  public openAddEditModal(isEdit: boolean, movie: Movie) {
     const modal: NgbModalRef = this.modalService.open(AddEditMovieComponent, { ariaLabelledBy: 'modal-basic-title' })
     modal.result.then(() => {
     }, (reason) => {
@@ -32,9 +34,13 @@ export class MoviesSectionComponent implements OnInit {
     modal.componentInstance.movie = movie;
   }
 
-  deleteMovie(movieId: number) {
+  public deleteMovie(movieId: number) {
+    this.subscriptions.push(
     this.contentService.deleteMovie(movieId).subscribe(res => {
       this.onMovieSaved.emit();
-    })
+    }))
+  }
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe())
   }
 }

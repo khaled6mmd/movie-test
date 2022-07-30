@@ -3,11 +3,16 @@
         <h3>{{category}}</h3>
     </div>
     <ul class="movies-list">
-        <li *ngFor="let movie of movies"><a href="#">
+        <li class="movies-item" *ngFor="let movie of movies">
+            <a href="#">
             <img class="movie-thumb" [src]="'https://test-api.storexweb.com/' + movie.image" alt="movie poster"></a>
+            <div class="movie-info mt-3">
+                <h4 class="text-center">{{movie.name}}</h4>
+                <p class="text-center">{{movie.description}}</p>
+            </div>
             <div class="movie-options">
-                <button class="edit-btn" (click)="openAddEditModal(true, movie)">Edit</button>
-                <button class="delete-btn" (click)="deleteMovie(movie.id)">Delete</button>
+                <button class="btn btn-primary edit-btn" (click)="openAddEditModal(true, movie)">Edit</button>
+                <button class="btn btn-primary delete-btn" (click)="deleteMovie(movie.id)">Delete</button>
             </div>
         </li>
     </ul>

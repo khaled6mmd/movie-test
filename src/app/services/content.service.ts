@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,32 +11,32 @@ export class ContentService {
 
   apiBase: string = 'https://test-api.storexweb.com/api/';
 
-  getAllMovies() {
+  public getAllMovies(): Observable<any>  {
     const action = 'movies';
     return this.http.get<any>(this.apiBase + action)
   }    
 
-  getMoviesByCategory(category_id: number) {
+  public getMoviesByCategory(category_id: number): Observable<any>  {
     const action = 'moviesByCategory/'
     return this.http.get<any>(this.apiBase + action + category_id)
   } 
 
-  addMovie(newMovie: FormData) {
+  public addMovie(newMovie: FormData): Observable<any>  {
     const action = 'movies';
     return this.http.post<any>(this.apiBase + action, newMovie)
   }
 
-  updateMovie(movieId:number, newMovie: FormData) {
+  public updateMovie(movieId:number, newMovie: FormData): Observable<any>  {
     const action = 'movies/';
     return this.http.put<any>(this.apiBase + action + movieId, newMovie)
   }
 
-  deleteMovie(id:number) {
+  public deleteMovie(id:number): Observable<any>  {
     const action = 'movies/';
     return this.http.post<any>(this.apiBase + action + id, {_method:'delete'})
   }
 
-  getCategories() {
+  public getCategories(): Observable<any> {
     const action = 'category';
     return this.http.get<any>(this.apiBase + action)
   }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,25 +10,24 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  signUp(newUser: { name: string, email: string, password: string }) {    
+  public signUp(newUser: { name: string, email: string, password: string }) {    
     return this.http.post<any>('https://test-api.storexweb.com/api/register', newUser)
   }
 
-  logIn(user: { email: string, password: string }) {
+  public logIn(user: { email: string, password: string }): Observable<any>  {
     return this.http.post<any>('https://test-api.storexweb.com/api/login', user)
   }
 
-  storeToken(token: string) {
+  public storeToken(token: string): void  {
     localStorage.setItem('moviesToken', token)
   }
 
-  isloggedIn() {
+  public isloggedIn(): boolean  {
     return !!localStorage.getItem('moviesToken')
   }
 
-  logOut() {
+  public logOut(): void  {
     localStorage.removeItem('moviesToken')
     this.router.navigate(['/login'])
   }
-
 }
