@@ -27,9 +27,9 @@ export class ContentService {
     return this.http.post<any>(this.apiBase + action, newMovie)
   }
 
-  public updateMovie(movieId:number, newMovie: Movie): Observable<any>  {
+  public updateMovie(movieId:number, newMovie: FormData): Observable<any>  {
     const action = 'movies/';
-    return this.http.put<any>(this.apiBase + action + movieId, newMovie)
+    return this.http.post<any>(this.apiBase + action + movieId, newMovie)
   }
 
   public deleteMovie(id:number): Observable<any>  {

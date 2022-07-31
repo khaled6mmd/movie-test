@@ -63,8 +63,9 @@ export class AddEditMovieComponent implements OnInit, OnDestroy {
     }
 
     if (this.isEdit) {
+      formData.append('_method', 'put')
       this.subscriptions.push(
-        this.contentService.updateMovie(this.movie.id, newMovie).subscribe({
+        this.contentService.updateMovie(this.movie.id, formData).subscribe({
           next: res => {
             if (res.status == 'success') {
               this.activeModal.dismissAll('saved');
