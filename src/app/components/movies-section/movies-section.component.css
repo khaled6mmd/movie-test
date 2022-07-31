@@ -76,10 +76,26 @@
     margin: 10px 20px;
 }
 
-.edit-btn {
+.option-btn {
     width: 100px
 }
 
-.delete-btn {
-    width: 100px
+/* for screen sizes smaller than 768px */
+@media screen and (max-width: 768px) {
+    .movies-section {
+        padding: 0;
+    }
+    .movies-list {
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+    }
+    .movie-thumb {
+        max-width: unset;
+        min-width: unset;
+        object-fit: cover;
+    }
+    .option-btn {
+        margin: 0 3px;
+    }
 }

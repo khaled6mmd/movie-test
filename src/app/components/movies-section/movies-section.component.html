@@ -11,8 +11,8 @@
                 <p class="text-center">{{truncateString(movie.description, 20)}}</p>
             </div>
             <div class="movie-options">
-                <button class="btn btn-primary edit-btn" (click)="openAddEditModal(true, movie)">Edit</button>
-                <button class="btn btn-primary delete-btn" (click)="openDeleteConfirmationDialog(movie.id)">Delete</button>
+                <button class="btn btn-primary option-btn" (click)="openAddEditModal(true, movie)">Edit</button>
+                <button class="btn btn-primary option-btn" (click)="openDeleteConfirmationDialog(movie.id)">Delete</button>
             </div>
         </li>
     </ul>

@@ -70,14 +70,12 @@ export class AddEditMovieComponent implements OnInit, OnDestroy {
               this.activeModal.dismissAll('saved');
             } if (res.status == 'failed') {
               this.getErrorMsgs(res.message);
-              console.log(this.errorMsgs);
             }
           },
           error: err => {
             if (err.status == 401) {
               this.authService.logOut()
             }
-            console.log(err);
           }
         }))
     } else {
@@ -88,7 +86,6 @@ export class AddEditMovieComponent implements OnInit, OnDestroy {
               this.activeModal.dismissAll('saved');
             } if (res.status == 'failed') {
               this.getErrorMsgs(res.message);
-              console.log(this.errorMsgs);
             }
           },
           error: err => {
