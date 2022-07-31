@@ -42,11 +42,7 @@ export class CategoriesComponent implements OnInit {
     this.spinner.show();
     this.loader= true;
     this.selectedCategoryID = categoryId
-
-    if (categoryId) {
-      this.isCategorySelected = !this.isCategorySelected
-    }
-    this.isCategorySelected = true;
+  
     this.subscriptions.push(
       this.contentService.getMoviesByCategory(categoryId).subscribe(res => {
         this.movies = res.message;

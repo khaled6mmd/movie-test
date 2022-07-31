@@ -16,11 +16,19 @@ export class AddEditMovieComponent implements OnInit, OnDestroy {
   @Input() isEdit!: boolean;
   @Input() movie: Movie = new Movie;
   private subscriptions: Subscription[] = [];
+  errorMsgs: string[] = [];
 
   constructor(private activeModal: NgbModal, private contentService: ContentService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getAllCategories()
+  }
+  
+  public getErrorMsgs(message: any) {
+    this.errorMsgs = [];
+    for (let key in message) {
+      this.errorMsgs.push(message[key][0]);
+    }
   }
 
   public closeModal() {
@@ -50,22 +58,44 @@ export class AddEditMovieComponent implements OnInit, OnDestroy {
     formData.append('name', newMovie.name);
     formData.append('description', newMovie.description);
     formData.append('category_id', newMovie['category_id']);
-    console.log(formData);
-
     if (this.image) {
       formData.append('image', this.image, this.image.name);
     }
 
     if (this.isEdit) {
-      formData.append('_method', 'put');
       this.subscriptions.push(
-        this.contentService.updateMovie(this.movie.id, newMovie).subscribe(res => {
-          this.activeModal.dismissAll('saved');
+        this.contentService.updateMovie(this.movie.id, newMovie).subscribe({
+          next: res => {
+            if (res.status == 'success') {
+              this.activeModal.dismissAll('saved');
+            } if (res.status == 'failed') {
+              this.getErrorMsgs(res.message);
+              console.log(this.errorMsgs);
+            }
+          },
+          error: err => {
+            if (err.status == 401) {
+              this.authService.logOut()
+            }
+            console.log(err);
+          }
         }))
     } else {
       this.subscriptions.push(
-        this.contentService.addMovie(formData).subscribe(res => {
-          this.activeModal.dismissAll('saved');
+        this.contentService.addMovie(formData).subscribe({
+          next: res => {
+            if (res.status == 'success') {
+              this.activeModal.dismissAll('saved');
+            } if (res.status == 'failed') {
+              this.getErrorMsgs(res.message);
+              console.log(this.errorMsgs);
+            }
+          },
+          error: err => {
+            if (err.status == 401) {
+              this.authService.logOut()
+            }
+          }
         })
       )
     }

@@ -12,7 +12,7 @@
             </div>
             <div class="movie-options">
                 <button class="btn btn-primary edit-btn" (click)="openAddEditModal(true, movie)">Edit</button>
-                <button class="btn btn-primary delete-btn" (click)="deleteMovie(movie.id)">Delete</button>
+                <button class="btn btn-primary delete-btn" (click)="openDeleteConfirmationDialog(movie.id)">Delete</button>
             </div>
         </li>
     </ul>

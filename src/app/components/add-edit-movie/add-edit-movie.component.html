@@ -11,11 +11,11 @@
                         <form name="form" #f="ngForm" (ngSubmit)="saveMovie(f.value)">
                             <div class="form-group mt-3">
                                 <label class="mb-2">Name</label>
-                                <input type="text" class="form-control" name="name" [(ngModel)]="movie.name"  #name="ngModel" />
+                                <input type="text" class="form-control" name="name" [ngModel]="movie.name"  #name="ngModel" />
                             </div>
                             <div class="form-group mt-3">
                                 <label class="mb-2">Description</label>
-                                <input type="text" class="form-control" name="description" [(ngModel)]="movie.description" #description="ngModel" />
+                                <input type="text" class="form-control" name="description" [ngModel]="movie.description" #description="ngModel" />
                             </div>
                             <div class="form-group mt-3">
                                 <label class="mb-2">Image</label>
@@ -28,8 +28,13 @@
                                     <option *ngFor="let genre of categories" [value]="genre.id">{{genre.name}}</option>
                                 </select>
                             </div>
+                            <div class="alert alert-danger mt-3" *ngIf="errorMsgs.length">
+                                <div *ngFor="let error of errorMsgs">
+                                    {{error}}
+                                </div>
+                            </div>
                             <button class="btn btn-primary mt-3" type="submit">
-                                {{isEdit? 'Edit Movie': 'Add Movie'}}
+                                {{isEdit? 'Save Movie': 'Add Movie'}}
                             </button>
                         </form>
                     </div>

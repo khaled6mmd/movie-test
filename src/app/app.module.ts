@@ -20,6 +20,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HeaderComponent } from './components/header/header.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HeaderComponent } from './components/header/header.component';
     AddEditMovieComponent,
     CategoriesComponent,
     HeaderComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,

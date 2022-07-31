@@ -6,50 +6,33 @@
                     <h3 class="panel-title">Sign up</h3>
                 </div>
                 <div class="panel-body">
-                    <form name="form" #f="ngForm" (ngSubmit)="onSubmit(f.value)" >
+                    <form name="form" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
                         <div class="form-group mt-3">
                             <label>Name</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                name="name"
-                                ngModel
-                                #name="ngModel"
-                            />
+                            <input type="text" class="form-control" name="name" ngModel #name="ngModel" />
                         </div>
                         <div class="form-group mt-3">
                             <label>Email</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                name="email"
-                                ngModel
-                                #email="ngModel"
-                            />
+                            <input type="text" class="form-control" name="email" ngModel #email="ngModel" />
                         </div>
                         <div class="form-group mt-3">
                             <label>Password</label>
-                            <input
-                                type="password"
-                                class="form-control"
-                                name="password"
-                                ngModel 
-                                #password="ngModel"
-                            />
+                            <input type="password" class="form-control" name="password" ngModel #password="ngModel" />
                         </div>
-                        <div *ngIf="responseMsg && !responseMsg?.email && !responseMsg?.name && !responseMsg?.password" class="mt-3">{{responseMsg}}</div>
-                        <div *ngIf="responseMsg" class="mt-3">{{responseMsg?.email}}</div>
-                        <div *ngIf="responseMsg" class="mt-3">{{responseMsg?.name}}</div>
-                        <div *ngIf="responseMsg" class="mt-3">{{responseMsg?.password}}</div>
-                            <button class="btn btn-primary mt-3" type="submit">
-                                Sign up
-                            </button>
+                        <div class="alert alert-danger mt-3" *ngIf="errorMsgs.length">
+                            <div *ngFor="let error of errorMsgs">
+                                {{error}}
+                            </div>
+                        </div>
+                        <div class="alert alert-success mt-3" *ngIf="successMsg">
+                            {{successMsg}}
+                        </div>
+                        <button class="btn btn-primary mt-3" type="submit">
+                            Sign up
+                        </button>
+                        <div class="mt-3">Already User? <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a> </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
-
-
-  

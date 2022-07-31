@@ -2,3 +2,7 @@
     min-height: 50vh;
     position: relative;
 }
+
+.form-select {
+    height: 50px;
+}
