@@ -18,7 +18,7 @@ export class AuthService {
     return this.http.post<any>('https://test-api.storexweb.com/api/login', user)
   }
 
-  public storeToken(token: string): void  {
+  public storeToken(token: string)  {
     localStorage.setItem('moviesToken', token)
   }
 
@@ -26,7 +26,7 @@ export class AuthService {
     return !!localStorage.getItem('moviesToken')
   }
 
-  public logOut(): void  {
+  public logOut()  {
     localStorage.removeItem('moviesToken')
     this.router.navigate(['/login'])
   }

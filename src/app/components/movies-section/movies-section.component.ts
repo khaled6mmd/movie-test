@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
-import { Category, Movie } from 'src/app/models/content.model';
+import { Movie } from 'src/app/models/content.model';
 import { ContentService } from 'src/app/services/content.service';
 import { AddEditMovieComponent } from '../add-edit-movie/add-edit-movie.component';
 
@@ -13,7 +13,7 @@ import { AddEditMovieComponent } from '../add-edit-movie/add-edit-movie.componen
 export class MoviesSectionComponent implements OnInit, OnDestroy {
 
   @Input() movies: Movie[] = [];
-  @Input()category!: Category;
+  @Input() categoryName: string | undefined ;
   @Output() onMovieSaved: EventEmitter<any> = new EventEmitter();
   private subscriptions: Subscription[] = [];
 
@@ -40,6 +40,11 @@ export class MoviesSectionComponent implements OnInit, OnDestroy {
       this.onMovieSaved.emit();
     }))
   }
+
+  truncateString(string: string, number: number) {
+    return (string.length > number) ? string.substr(0, number-1) + '...' : string;
+  };
+
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe())
   }

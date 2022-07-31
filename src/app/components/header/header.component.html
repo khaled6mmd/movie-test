@@ -1,0 +1,28 @@
+<header>
+    <nav>
+        <a href="#" class="logo">MOVIES</a>
+        <ul class="desktop">
+            <li class="nav-item"><a routerLink="/home">Home</a></li>
+            <li class="nav-item"><a routerLink="/categories">Browse by category</a></li>
+            <li class="nav-item"><a (click)="onLogOut()">Log out</a></li>
+        </ul>
+        <div class="mobile">
+            <label for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle">
+            <ul>
+                <li><a routerLink="/categories">Browse by category</a></li>
+                <li><a routerLink="/home">Home</a></li>
+                <li><a (click)="onLogOut()">Log out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>Stream Any Movie at Anytime with No Individual Movie Costs or Rental Fees.</h1>
+    <div class="btnGroup">
+        <a routerLink="/categories" class="btnWhite">SEE MORE</a>
+        <div class="whiteBG"></div>
+    </div>
+
+    <img src="http://swingsetimagination.com/practice_web_moviesite/img/ipad-pro.png" alt="ipad" class="ipad">
+    <img src="http://swingsetimagination.com/practice_web_moviesite/img/iphone.png" alt="iphone" class="iphone">
+</header>

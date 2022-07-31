@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Movie } from '../models/content.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ContentService {
     return this.http.get<any>(this.apiBase + action)
   }    
 
-  public getMoviesByCategory(category_id: number): Observable<any>  {
+  public getMoviesByCategory(category_id: string): Observable<any>  {
     const action = 'moviesByCategory/'
     return this.http.get<any>(this.apiBase + action + category_id)
   } 
@@ -26,7 +27,7 @@ export class ContentService {
     return this.http.post<any>(this.apiBase + action, newMovie)
   }
 
-  public updateMovie(movieId:number, newMovie: FormData): Observable<any>  {
+  public updateMovie(movieId:number, newMovie: Movie): Observable<any>  {
     const action = 'movies/';
     return this.http.put<any>(this.apiBase + action + movieId, newMovie)
   }

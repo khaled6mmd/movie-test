@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,11 @@ import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MoviesSectionComponent } from './components/movies-section/movies-section.component';
 import { AddEditMovieComponent } from './components/add-edit-movie/add-edit-movie.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HeaderComponent } from './components/header/header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +29,8 @@ import { AddEditMovieComponent } from './components/add-edit-movie/add-edit-movi
     HomeComponent,
     MoviesSectionComponent,
     AddEditMovieComponent,
+    CategoriesComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +41,11 @@ import { AddEditMovieComponent } from './components/add-edit-movie/add-edit-movi
     HttpClientModule,
     AccordionModule,
     CarouselModule,
-    SidebarModule
+    SidebarModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ AuthService , 
     {
      provide: HTTP_INTERCEPTORS,

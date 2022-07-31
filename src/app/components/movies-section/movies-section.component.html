@@ -1,14 +1,14 @@
 <section class="movies-section">
     <div class="sectionTitle">
-        <h3>{{category}}</h3>
+        <h3>{{categoryName}}</h3>
     </div>
     <ul class="movies-list">
         <li class="movies-item" *ngFor="let movie of movies">
             <a href="#">
             <img class="movie-thumb" [src]="'https://test-api.storexweb.com/' + movie.image" alt="movie poster"></a>
             <div class="movie-info mt-3">
-                <h4 class="text-center">{{movie.name}}</h4>
-                <p class="text-center">{{movie.description}}</p>
+                <h4 class="text-center">{{truncateString(movie.name, 20)}}</h4>
+                <p class="text-center">{{truncateString(movie.description, 20)}}</p>
             </div>
             <div class="movie-options">
                 <button class="btn btn-primary edit-btn" (click)="openAddEditModal(true, movie)">Edit</button>
@@ -17,3 +17,4 @@
         </li>
     </ul>
 </section>
+

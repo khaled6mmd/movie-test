@@ -1,38 +1,18 @@
-<header>
-    <nav>
-        <a href="#" class="logo">MOVIES</a>
-        <ul class="desktop">
-            <li class="nav-item"><a (click)="onLogOut()">Log out</a></li>
-        </ul>
-        <div class="mobile">
-            <label for="toggle">&#9776;</label>
-            <input type="checkbox" id="toggle">
-            <ul>
-                <li><a (click)="onLogOut()">Log out</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <h1>Stream Any Movie at Anytime with No Individual Movie Costs or Rental Fees.</h1>
-    <div class="btnGroup">
-        <a href="#" class="btnWhite">TRY IT FREE</a>
-        <div class="whiteBG"></div>
-    </div>
-
-    <img src="http://swingsetimagination.com/practice_web_moviesite/img/ipad-pro.png" alt="ipad" class="ipad">
-    <img src="http://swingsetimagination.com/practice_web_moviesite/img/iphone.png" alt="iphone" class="iphone">
-</header>
-
-
+<app-header></app-header>
 <div class="container">
     <div class="row justify-content-between">
-        <h2 class="col-md-3">
-            Movies
-        </h2>
+        <div class="col-md-7 sectionTitle">
+                <h2>MOVIES</h2>
+                <a routerLink="/categories" class="btnGreen">SEE MORE</a>
+        </div>
         <div class="col-md-2 align-self-center text-center">
             <h5 class="add-btn" (click)="openAddEditModal(false)">+Add Movie</h5>
         </div>
     </div>
+    <div class="movies-list-wraper">
+        <ngx-spinner bdColor = "rgba(0, 0, 0, 0.0)" size = "large" color = "#8aa4cd" type = "ball-scale-multiple" [fullScreen] = "false"></ngx-spinner>
+        <ng-container *ngFor="let category of availableCategories">
+        <app-movies-section *ngIf="filtertMoviesByCategory(category.id).length > 0" [movies]='filtertMoviesByCategory(category.id)'
+        [categoryName]='category.name' (onMovieSaved)="getAllMovies()"></app-movies-section>
+      </ng-container></div>
 
-    <app-movies-section *ngFor="let category of availableCategories" [movies]='filtertMoviesByCategory(category.id)'
-        [category]='category.name' (onMovieSaved)="getAllMovies()"></app-movies-section>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { Category, Movie } from 'src/app/models/content.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ContentService } from 'src/app/services/content.service';
 
 @Component({
@@ -14,49 +15,58 @@ export class AddEditMovieComponent implements OnInit, OnDestroy {
   private image!: File;
   @Input() isEdit!: boolean;
   @Input() movie: Movie = new Movie;
-  subscriptions: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
 
-  constructor(private activeModal: NgbModal, private contentService: ContentService) { }
+  constructor(private activeModal: NgbModal, private contentService: ContentService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getAllCategories()
   }
 
-  public closeModal(): void {
+  public closeModal() {
     this.activeModal.dismissAll();
   }
 
-  public onFileChanged(event : any): void {
+  public onFileChanged(event: any) {
     this.image = event.target.files[0];
   }
 
-  public getAllCategories(): void {
+  public getAllCategories() {
     this.subscriptions.push(
-      this.contentService.getCategories().subscribe(res => {
-        this.categories = res.message;
+      this.contentService.getCategories().subscribe({
+        next: res => {
+          this.categories = res.message;
+        },
+        error: err => {
+          if (err.status == 401) {
+            this.authService.logOut()
+          }
+        }
       }))
   }
 
-  public saveMovie(newMovie: Movie): void {    
+  public saveMovie(newMovie: Movie) {
     const formData: FormData = new FormData();
     formData.append('name', newMovie.name);
     formData.append('description', newMovie.description);
     formData.append('category_id', newMovie['category_id']);
+    console.log(formData);
 
     if (this.image) {
       formData.append('image', this.image, this.image.name);
     }
-    
+
     if (this.isEdit) {
+      formData.append('_method', 'put');
       this.subscriptions.push(
-      this.contentService.updateMovie(this.movie.id, formData).subscribe(res => {
-        this.activeModal.dismissAll('saved');
-      }))
+        this.contentService.updateMovie(this.movie.id, newMovie).subscribe(res => {
+          this.activeModal.dismissAll('saved');
+        }))
     } else {
       this.subscriptions.push(
-      this.contentService.addMovie(formData).subscribe(res => {
-        this.activeModal.dismissAll('saved');
-      })
+        this.contentService.addMovie(formData).subscribe(res => {
+          this.activeModal.dismissAll('saved');
+        })
       )
     }
   }
