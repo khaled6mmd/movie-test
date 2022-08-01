@@ -42,7 +42,6 @@ export class CategoriesComponent implements OnInit {
     this.spinner.show();
     this.loader= true;
     this.selectedCategoryID = categoryId
-  
     this.subscriptions.push(
       this.contentService.getMoviesByCategory(categoryId).subscribe(res => {
         this.movies = res.message;
@@ -51,6 +50,10 @@ export class CategoriesComponent implements OnInit {
       }))
   }
 
+  refreshMoviesList() {
+    this.getMoviesByCategory(this.selectedCategoryID);
+  }
+  
   public getCategoryId(id: string) {
     return this.categories.find(category => category.id == id);
   }

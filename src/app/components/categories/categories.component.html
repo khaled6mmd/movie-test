@@ -13,7 +13,7 @@
         <ngx-spinner bdColor="rgba(0, 0, 0, 0.0)" size="large" color="#8aa4cd" type="ball-scale-multiple"
           [fullScreen]="false"></ngx-spinner>
           
-        <app-movies-section *ngIf="movies.length > 0" [movies]='movies'
+        <app-movies-section *ngIf="movies.length > 0" [movies]='movies' (onMovieSaved)="refreshMoviesList()"
           [categoryName]='getCategoryId(selectedCategoryID)?.name'></app-movies-section>
       </div>
     </div>
